@@ -6,15 +6,15 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #121212;
+  --background-color: #ffffff;
   /* Background color for the entire website, including individual sections */
-  --default-color: #ffffff;
+  --default-color: #00000;
   /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff;
+  --heading-color: #000000;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #B80000;
+  --accent-color: #2ed58c;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #242323;
+  --surface-color: #cb5a5a;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
   /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
@@ -24,30 +24,30 @@
 :root {
   --nav-color: #ffffff;
   /* The default color of the main navmenu links */
-  --nav-hover-color: #B80000;
+  --nav-hover-color: #ffffff;
   /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff;
   /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff;
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #242323;
+  --nav-dropdown-color: #0a048c;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #B80000;
+  --nav-dropdown-hover-color: #ffffff;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #121212;
-  --surface-color: #242323;
+  --background-color: #f34747;
+  --surface-color: #6bf4a6;
 }
 
 .dark-background {
-  --background-color: #121212;
+  --background-color: #67b0da;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #121212;
+  --surface-color: #00866d;
   --contrast-color: #ffffff;
 }
 
@@ -175,7 +175,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: #121212;
+  --background-color: #67b0da;
 }
 
 /*--------------------------------------------------------------
@@ -1067,11 +1067,6 @@ section,
   color: var(--contrast-color);
 }
 
-.about .icon-boxes .col-md-6:nth-child(2) .icon-box,
-.about .icon-boxes .col-md-6:nth-child(4) .icon-box {
-  margin-top: -40px;
-}
-
 @media (max-width: 768px) {
 
   .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
@@ -1084,19 +1079,25 @@ section,
 # Features Section
 --------------------------------------------------------------*/
 .features .features-item {
-  background-color: var(--surface-color);
+  background-color: #ffffff;
   display: flex;
-  align-items: center;
-  padding: 20px;
+  flex-direction: column;
+  gap: 1rem;
+  height: 13rem;
+  color: #0000;
+  padding: 10px;
   transition: 0.3s;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 3px 1px black;
 }
 
 .features .features-item i {
   font-size: 32px;
   padding-right: 10px;
   line-height: 0;
+  color: #699BF7;
 }
 
 .features .features-item h3 {
@@ -1108,24 +1109,42 @@ section,
 }
 
 .features .features-item h3 a {
-  color: var(--heading-color);
+  color: #000000;
   transition: 0.3s;
 }
 
-.features .features-item:hover {
-  border-color: var(--accent-color);
+.features .features-item article{
+  color: #000000;
 }
 
-.features .features-item:hover h3 a {
-  color: var(--accent-color);
+.features-icon {
+  background-color: #F3FCF4;
+  width: 100%;
+  padding: 10px
 }
+
+.icon {
+  background-color: #05A7AA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+}
+
+.features-icon .icon i {
+  margin-left: 10px;
+  color: white;
+}
+  
 
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
 .stats i {
   background-color: var(--surface-color);
-  color: var(--accent-color);
+  color: #000000;
   box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
   width: 54px;
   height: 54px;
@@ -1144,6 +1163,7 @@ section,
   margin-top: -27px;
   padding: 30px 30px 25px 30px;
   width: 100%;
+  height: 10rem;
   position: relative;
   text-align: center;
   box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
@@ -1348,76 +1368,6 @@ section,
   .testimonials .testimonial-item p {
     width: 80%;
   }
-}
-
-/*--------------------------------------------------------------
-# Team Section
---------------------------------------------------------------*/
-.team .member {
-  position: relative;
-}
-
-.team .member .pic {
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-
-.team .member .member-info {
-  background-color: var(--surface-color);
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  bottom: -50px;
-  left: 20px;
-  right: 20px;
-  padding: 20px 15px;
-  overflow: hidden;
-  transition: 0.5s;
-}
-
-.team .member h4 {
-  font-weight: 700;
-  margin-bottom: 10px;
-  font-size: 16px;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.team .member h4::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: color-mix(in srgb, var(--default-color), transparent 60%);
-  bottom: 0;
-  left: 0;
-}
-
-.team .member span {
-  font-style: italic;
-  display: block;
-  font-size: 13px;
-}
-
-.team .member .social {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-}
-
-.team .member .social a {
-  transition: color 0.3s;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.team .member .social a:hover {
-  color: var(--accent-color);
-}
-
-.team .member .social i {
-  font-size: 16px;
-  margin: 0 2px;
 }
 
 /*--------------------------------------------------------------
