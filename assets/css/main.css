@@ -44,7 +44,7 @@
 }
 
 .dark-background {
-  --background-color: #67b0da;
+  --background-color: #36BA98;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #00866d;
@@ -175,7 +175,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: #67b0da;
+  --background-color: #36BA98;
 }
 
 /*--------------------------------------------------------------
@@ -1215,6 +1215,37 @@ section,
   transform: scale(1.1);
 }
 
+.gallery-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.gallery-item-container {
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+
+/* Duplikasi untuk membuat efek menyambung */
+.gallery-item-container::after {
+  content: "";
+  display: flex;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
@@ -1340,24 +1371,21 @@ section,
 # Pricing Section
 --------------------------------------------------------------*/
 .pricing .pricing-item {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 96%);
-  padding: 40px 40px;
-  height: 100%;
-  border-radius: 15px;
+  background-color: #ffff;
+  border: 1px solid #DFDFDF;
+  padding: 30px 30px;
+  border-radius: 5px;
 }
 
 .pricing h3 {
   font-weight: 600;
-  margin-bottom: 15px;
   font-size: 20px;
 }
 
 .pricing h4 {
-  color: var(--accent-color);
   font-size: 48px;
   font-weight: 700;
   font-family: var(--heading-font);
-  margin-bottom: 0;
 }
 
 .pricing h4 sup {
@@ -1374,84 +1402,39 @@ section,
   font-size: 14px;
 }
 
-.pricing .cta-btn {
-  border: 1px solid var(--default-color);
-  color: var(--default-color);
-  display: block;
-  text-align: center;
-  padding: 10px 35px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: var(--heading-font);
-  transition: 0.3s;
-  margin-top: 20px;
-  margin-bottom: 6px;
+.pricing p {
+  margin-top: 30px;
+  font-size: 15px;
 }
 
-.pricing .cta-btn:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
-}
-
-.pricing ul {
-  padding: 0;
-  list-style: none;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  text-align: left;
-  line-height: 20px;
-}
-
-.pricing ul li {
-  padding: 10px 0;
+.container-price {
   display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.pricing ul li:last-child {
-  padding-bottom: 0;
+.diskon {
+  text-decoration-line: line-through;
 }
 
-.pricing ul i {
-  color: #059652;
-  font-size: 24px;
-  padding-right: 3px;
-}
-
-.pricing ul .na {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na i {
-  color: color-mix(in srgb, var(--default-color), transparent 60%);
-}
-
-.pricing ul .na span {
-  text-decoration: line-through;
-}
-
-.pricing .featured {
-  position: relative;
-}
-
-.pricing .featured .popular {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 4px 15px 6px 15px;
-  margin: 0;
+.cta-btn {
+  width: 100%;
+  border: none;
+  padding: 8px;
   border-radius: 5px;
-  font-size: 14px;
-  font-weight: 500;
 }
 
-.pricing .featured .cta-btn {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
+.price-item h5 {
+  font-style: bold;
+  font-size: 15px;
 }
 
 @media (max-width: 992px) {

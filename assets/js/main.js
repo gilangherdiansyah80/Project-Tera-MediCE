@@ -179,7 +179,61 @@
       }
     })
   }
+
+  const pricing = (e) => {
+    e.preventDefault();
+    const buttonPrev = document.querySelector('.btn-prev');
+    const buttonNext = document.querySelector('.btn-next');
+    const totalUser = document.querySelector('.total-user');
+    const diskon = document.querySelector('.diskon');
+    
+    // Pastikan elemen ditemukan sebelum memasang event listener
+    if (buttonPrev && buttonNext && totalUser && diskon) {
+      const hargaPerUser = 50000; // Harga diskon per user
+  
+      // Format mata uang menggunakan Intl.NumberFormat
+      const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          
+        }).format(amount);
+      };
+  
+      // Fungsi untuk memperbarui diskon berdasarkan total user
+      const updateDiskon = (currentValue) => {
+        let totalDiskon = currentValue * hargaPerUser;
+        diskon.innerHTML = formatCurrency(totalDiskon); // Format diskon dengan currency
+      };
+  
+      // Event untuk tombol "prev"
+      buttonPrev.addEventListener('click', () => {
+        let currentValue = parseInt(totalUser.innerHTML) || 0;
+        if (currentValue > 0) { // Cegah nilai user kurang dari 1
+          totalUser.innerHTML = currentValue - 1;
+          updateDiskon(currentValue - 1); // Kurangi diskon
+        }
+      });
+  
+      // Event untuk tombol "next"
+      buttonNext.addEventListener('click', () => {
+        let currentValue = parseInt(totalUser.innerHTML) || 0;
+        totalUser.innerHTML = currentValue + 1;
+        updateDiskon(currentValue + 1); // Tambah diskon
+      });
+    } else {
+      console.error('Element(s) not found');
+    }
+  };  
+
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+  // Panggil fungsi pricing saat halaman sudah siap
+  document.addEventListener('DOMContentLoaded', pricing);
+
 
 })();
+
+
+
+
