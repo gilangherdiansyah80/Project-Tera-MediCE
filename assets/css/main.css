@@ -14,7 +14,7 @@
   /* Color for headings, subheadings and title throughout the website */
   --accent-color: #2ed58c;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #cb5a5a;
+  --surface-color: #36BA98;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
   /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
@@ -1016,7 +1016,7 @@ section,
   line-height: 0;
   transition: all 0.4s ease-out 0s;
   background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
-  color: var(--accent-color);
+  color: black;
 }
 
 .about .icon-box h3 {
@@ -1203,6 +1203,7 @@ section,
 --------------------------------------------------------------*/
 .gallery .gallery-item {
   overflow: hidden;
+  height: 10rem;
   border-right: 3px solid var(--background-color);
   border-bottom: 3px solid var(--background-color);
 }
@@ -1374,9 +1375,9 @@ section,
   background-color: #ffff;
   border: 1px solid #DFDFDF;
   padding: 30px 30px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   display: flex;
-  height: 35rem;
+  height: 23rem;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -1411,11 +1412,18 @@ section,
   font-size: 15px;
 }
 
+.diskon {
+  text-decoration-line: line-through;
+}
+
+.diskon span {
+  text-decoration-line: none;
+}
+
 .container-price {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  row-gap: 10px;
   width: 100%;
 }
 
@@ -1423,12 +1431,15 @@ section,
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: -20px;
 }
 
 .container-btn {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
 }
 
 .features-btn {
@@ -1535,7 +1546,7 @@ section,
   margin-top: -10px;
 }
 
-.list-features div {
+.container-features {
   border: 1px solid #DEE2E6;
   display: flex;
   align-items: center;
@@ -1550,8 +1561,8 @@ section,
 
 .icon-features {
   background-color: #28A745;
-  width: 3px;
-  height: 3px;
+  width: 15px;
+  height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1591,11 +1602,29 @@ section,
   display: flex;
   justify-content: space-between;
   height: 59px;
+  border: 1px solid #DEE2E6;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
 }
 
 .feature-price {
   display: flex;
   flex-direction: column;
+}
+
+.price-addons {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+}
+
+.btn-prev {
+  width: 30px;
+}
+
+.btn-next {
+  width: 30px;
 }
 
 @media (max-width: 992px) {

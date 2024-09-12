@@ -190,86 +190,185 @@
   };
 
   const pricing = () => {
-    const buttonPrev = document.querySelector('.btn-prev');
-    const buttonNext = document.querySelector('.btn-next');
-    const totalUser = document.querySelector('.total-user');
-    const diskon = document.querySelector('.diskon');
-    const totalPrice = document.querySelector('.total-price');
+    const buttonsPrev = document.querySelectorAll('.btn-prev');
+    const buttonsNext = document.querySelectorAll('.btn-next');
+    const containers = document.querySelectorAll('.container-addons');
 
-    // Pastikan elemen ditemukan sebelum memasang event listener
-    if (buttonPrev && buttonNext && totalUser && diskon && totalPrice) {
-        const hargaPerUser = 50000;
-        const hargaDiskon = 40000; // Harga diskon per user jika > 5 user
-  
-        // Fungsi untuk memperbarui diskon berdasarkan total user
-        const updateDiskon = (currentValue) => {
-            let totalDiskon = currentValue * hargaPerUser;
-            diskon.innerHTML = formatCurrency(totalDiskon); // Format diskon dengan currency
-        };
+    const diskonTotalElem = document.querySelector('.diskon-total');
+    const totalPriceTotalElem = document.querySelector('.total-price-total');
 
-        // Fungsi untuk memperbarui total harga
-        const total = (currentValue) => {
-            let hargaPerUserAktual = currentValue > 5 ? hargaDiskon : hargaPerUser;
-            let totalHarga = currentValue * hargaPerUserAktual;
-            if (currentValue > 5) {
-              totalPrice.innerHTML = formatCurrency(totalHarga);
-              diskon.style = 'text-decoration-line: line-through';
-          } else if (currentValue <= 5) {
-              totalPrice.innerHTML = '';
-              diskon.style = 'text-decoration-line: none';
-          }
-        };
-  
-        // Event untuk tombol "prev"
+    // Menyimpan total harga dan diskon untuk setiap baris
+    let totalHargaSemuaBaris = 0;
+    let totalDiskonSemuaBaris = 0;
+
+    const hargaPerUserDefault = 50000; // Harga default untuk baris 1, 2, 3
+    const hargaDiskon1Default = 40000;
+    const hargaDiskon2Default = 35000;
+
+    // Harga yang berbeda untuk baris ke-4 dan seterusnya
+    const hargaBarisKeempat = 150000;
+    const hargaBarisKelima = 100000;
+    const hargaBarisKesembilan = 500000;
+    const hargaBarisKesepuluh = 250000;
+
+    // Fungsi untuk menentukan harga berdasarkan baris
+    const getHargaPerBaris = (index) => {
+        if (index === 3) {
+            return {
+                hargaPerUser: hargaBarisKeempat,
+            };
+        } else if (index === 4) {
+            return {
+                hargaPerUser: hargaBarisKelima,
+            };
+        } else if (index === 8) {
+            return {
+                hargaPerUser: hargaBarisKesembilan,
+            };
+        } else if (index === 9) {
+            return {
+                hargaPerUser: hargaBarisKesepuluh,
+            };
+        } else {
+            return {
+                hargaPerUser: hargaPerUserDefault,
+                hargaDiskon1: hargaDiskon1Default,
+                hargaDiskon2: hargaDiskon2Default
+            };
+        }
+    };
+
+    // Fungsi untuk menghitung total dan diskon dari satu container
+    const updateTotalForContainer = (container, index) => {
+      const totalUserElem = container.querySelector('.total-user');
+      let currentValue = parseInt(totalUserElem.innerHTML) || 0;
+      let totalPrice = 0;
+      let totalDiskon = 0;
+
+      const harga = getHargaPerBaris(index);
+
+      // Hitung harga berdasarkan jumlah user
+      if (currentValue > 10) {
+          totalPrice = currentValue * harga.hargaDiskon2;
+      } else if (currentValue > 5) {
+          totalPrice = currentValue * harga.hargaDiskon1;
+      } else if (currentValue > 0) {
+          totalPrice = currentValue * harga.hargaPerUser;
+      }
+
+      totalDiskon = currentValue * harga.hargaPerUser;
+
+      // Hitung total harga dan diskon dari semua baris
+      totalHargaSemuaBaris += totalPrice;
+      totalDiskonSemuaBaris += totalDiskon;
+
+      diskonTotalElem.innerHTML = formatCurrency(totalDiskonSemuaBaris);
+      totalPriceTotalElem.innerHTML = formatCurrency(totalHargaSemuaBaris);
+
+      // Tambahkan efek garis pada diskon jika ada pengurangan harga
+      if (totalPrice < totalDiskon) {
+          diskonTotalElem.style = 'text-decoration-line: line-through';
+      } else {
+          diskonTotalElem.style = 'text-decoration-line: none';
+      }
+
+      // Return updated total price and discount for the row
+      return { totalPrice, totalDiskon };
+  };
+
+    // Event listeners untuk prev dan next
+    containers.forEach((container, index) => {
+        const buttonPrev = container.querySelector('.btn-prev');
+        const buttonNext = container.querySelector('.btn-next');
+        const totalUserElem = container.querySelector('.total-user');
+
+        let totalHargaPerBaris = 0;
+        let totalDiskonPerBaris = 0;
+
         buttonPrev.addEventListener('click', () => {
-            let currentValue = parseInt(totalUser.innerHTML) || 0;
-            if (currentValue > 0) { // Cegah nilai user kurang dari 1
-                totalUser.innerHTML = currentValue - 1;
-                updateDiskon(currentValue - 1); // Kurangi diskon
-                total(currentValue - 1); // Perbarui total harga
-            }
-        });
+          let currentValue = parseInt(totalUserElem.innerHTML) || 0;
+          if (currentValue > 0) {
+              totalUserElem.innerHTML = currentValue - 1;
   
-        // Event untuk tombol "next"
+              // Kurangi total harga dan diskon untuk baris ini sebelum update
+              totalHargaSemuaBaris -= totalHargaPerBaris;
+              totalDiskonSemuaBaris -= totalDiskonPerBaris;
+  
+              // Update nilai untuk container ini dan baris ini
+              const { totalPrice, totalDiskon } = updateTotalForContainer(container, index);
+  
+              // Update harga dan diskon per baris setelah update total
+              totalHargaPerBaris = totalPrice;
+              totalDiskonPerBaris = totalDiskon;
+          }
+      });
+
         buttonNext.addEventListener('click', () => {
-            let currentValue = parseInt(totalUser.innerHTML) || 0;
-            totalUser.innerHTML = currentValue + 1;
-            updateDiskon(currentValue + 1); // Tambah diskon
-            total(currentValue + 1); // Perbarui total harga
-        });
-    } else {
-        console.error('Element(s) not found');
-    }
+          let currentValue = parseInt(totalUserElem.innerHTML) || 0;
+          totalUserElem.innerHTML = currentValue + 1;
+  
+          // Kurangi total harga dan diskon untuk baris ini sebelum update
+          totalHargaSemuaBaris -= totalHargaPerBaris;
+          totalDiskonSemuaBaris -= totalDiskonPerBaris;
+  
+          // Update nilai untuk container ini dan baris ini
+          const { totalPrice, totalDiskon } = updateTotalForContainer(container, index);
+  
+          // Update harga dan diskon per baris setelah update total
+          totalHargaPerBaris = totalPrice;
+          totalDiskonPerBaris = totalDiskon;
+      });
+    });
 };
 
+
 const cardFeatures = () => {
-  const sectionFeatures = document.querySelector('.card-features-basic');
-  const basic = document.querySelector('#basic');
-  const icon = document.querySelector('#icon-close');
-  const btnFeatures = document.querySelector('#btn-features');
-  const btnAddons = document.querySelector('#btn-addons');
-  const addons = document.querySelector('.section-addons');
-  const features = document.querySelector('.section-features');
-  const container = document.querySelector('.container-right');
+  const pricingItems = document.querySelectorAll('#pricing-item');
+  const sectionFeatures = document.querySelectorAll('.card-features-basic');
+  const basic = document.querySelectorAll('#basic');
 
-  basic.addEventListener('click', () => {
-    sectionFeatures.removeAttribute('hidden');
-  })
+  sectionFeatures.forEach((containerFeature) => {
+    const icon = containerFeature.querySelector('#icon-close');
+    const btnFeatures = containerFeature.querySelector('#btn-features');
+    const btnAddons = containerFeature.querySelector('#btn-addons');
+    const addons = containerFeature.querySelector('.section-addons');
+    const features = containerFeature.querySelector('.section-features');
+    const containerRight = containerFeature.querySelector('.container-right');
+    const closeBtn = containerFeature.querySelector('.close-btn');
 
-  icon.addEventListener('click', () => {
-    sectionFeatures.setAttribute('hidden', true);
-  })
+    // Tutup card saat ikon 'close' atau 'closeBtn' diklik
+    icon.addEventListener('click', () => {
+      containerFeature.setAttribute('hidden', true);
+    });
 
-  btnAddons.addEventListener('click', () => {
-    addons.removeAttribute('hidden');
-    features.setAttribute('hidden', true);
-    container.style = 'overflow-y: hidden'
-  })
+    closeBtn.addEventListener('click', () => {
+      containerFeature.setAttribute('hidden', true);
+    });
 
-  btnFeatures.addEventListener('click', () => {
-    features.removeAttribute('hidden');
-  })
-}
+    // Tampilkan addons, sembunyikan fitur
+    btnAddons.addEventListener('click', () => {
+      addons.removeAttribute('hidden');
+      features.setAttribute('hidden', true);
+      containerRight.style = 'overflow-y: hidden';
+    });
+
+    // Tampilkan fitur, sembunyikan addons
+    btnFeatures.addEventListener('click', () => {
+      features.removeAttribute('hidden');
+      addons.setAttribute('hidden', true);
+    });
+  });
+
+  // Event handler untuk tombol "basic" pada setiap pricing item
+  pricingItems.forEach((item, index) => {
+    const basicBtn = item.querySelector('#basic');
+
+    basicBtn.addEventListener('click', () => {
+      sectionFeatures[index].removeAttribute('hidden');
+    });
+  });
+};
+
 
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
