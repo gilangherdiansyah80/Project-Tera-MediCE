@@ -783,9 +783,11 @@
 
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="pricing-item">
-              <h3 style="color: #FFC107;">Basic</h3>
-              <h4 class="description" style="color: #FFC107;">* Dengan Rekam Medis Elektronik</h4>
-              <p>Paket berlangganan yang direkomendasikan untuk Klinik tanpa adanya transaksi penjualan apotek, dan sudah dilengkapi dengan Rekam Medis Elektronik.</p>
+              <div>
+                <h3 style="color: #FFC107;">BASIC</h3>
+                <h4 class="description" style="color: #FFC107;">* Dengan Rekam Medis Elektronik</h4>
+                <p>Paket berlangganan yang direkomendasikan untuk Klinik tanpa adanya transaksi penjualan apotek, dan sudah dilengkapi dengan Rekam Medis Elektronik.</p>
+              </div>
               <div class="container-price">
                 <div class="price-item">
                   <h5 class="title-user">Jumlah User</h5>
@@ -799,12 +801,13 @@
                 <div class="price-item">
                   <h5 class="title">Biaya Per-Bulan</h5>
                   <div class="price">
-                    <p class="diskon">Rp. 50.000</p>
-                    <p>Rp. 299.000</p>
+                    <p class="diskon">Rp. 50.000,00</p>
+                    <p class="total-price"></p>
                   </div>
                 </div>
 
-                <div>
+                <div class="container-btn">
+                  <button class="features-btn" id="basic">SEE FEATURES & ADDONS</button>
                   <button class="cta-btn" style="background-color: #FFC107;">Coba Gratis</button>
                 </div>
               </div>
@@ -814,10 +817,12 @@
           
 
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="pricing-item featured">
-              <h3 style="color: #05A7AA;">Basic</h3>
-              <h4 class="description" style="color: #05A7AA;">* Dengan Rekam Medis Elektronik</h4>
-              <p>Paket berlangganan yang direkomendasikan untuk Klinik tanpa adanya transaksi penjualan apotek, dan sudah dilengkapi dengan Rekam Medis Elektronik.</p>
+            <div class="pricing-item">
+              <div>
+                <h3 style="color: #05A7AA;">STANDARD</h3>
+                <h4 class="description" style="color: #05A7AA;">* Dengan Rekam Medis Elektronik</h4>
+                <p>Paket berlangganan yang direkomendasikan untuk klinik dengan adanya apotek dan telah dilengkapi dengan Modul MCU dan Laboratorium.</p>
+              </div>
               <div class="container-price">
                 <div class="price-item">
                   <h5 class="title-user">Jumlah User</h5>
@@ -831,12 +836,13 @@
                 <div class="price-item">
                   <h5 class="title">Biaya Per-Bulan</h5>
                   <div class="price">
-                    <p class="diskon">Rp. 50.000</p>
-                    <p>Rp. 299.000</p>
+                    <p class="diskon">Rp. 50.000,00</p>
+                    <p></p>
                   </div>
                 </div>
 
-                <div>
+                <div class="container-btn">
+                  <button class="features-btn">SEE FEATURES & ADDONS</button>
                   <button class="cta-btn" style="background-color: #05A7AA;">Coba Gratis</button>
                 </div>
               </div>
@@ -845,9 +851,11 @@
 
           <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="pricing-item">
-              <h3 style="color: #FF3759;">Basic</h3>
-              <h4 class="description" style="color: #FF3759;">* Dengan Rekam Medis Elektronik</h4>
-              <p>Paket berlangganan yang direkomendasikan untuk Klinik tanpa adanya transaksi penjualan apotek, dan sudah dilengkapi dengan Rekam Medis Elektronik.</p>
+              <div>
+                <h3 style="color: #FF3759;">ADVANCED</h3>
+                <h4 class="description" style="color: #FF3759;">- Segera Hadir -</h4>
+                <p class="price-description">Paket berlangganan premium dengan paket lengkap cocok untuk transaksi klinik dengan layanan lengkap untuk penunjang medis, medical checkup dan pencatatan keuangan.</p>
+              </div>
               <div class="container-price">
                 <div class="price-item">
                   <h5 class="title-user">Jumlah User</h5>
@@ -861,18 +869,339 @@
                 <div class="price-item">
                   <h5 class="title">Biaya Per-Bulan</h5>
                   <div class="price">
-                    <p class="diskon">Rp. 50.000</p>
-                    <p>Rp. 299.000</p>
+                    <p class="diskon">Rp. 50.000,00</p>
+                    <p>test</p>
                   </div>
                 </div>
 
-                <div>
+                <div class="container-btn">
+                  <button class="features-btn">SEE FEATURES & ADDONS</button>
                   <button class="cta-btn" style="background-color: #FF3759;">Coba Gratis</button>
                 </div>
               </div>
             </div>
           </div><!-- End Pricing Item -->
 
+          <section class="card-features-basic" hidden>
+            <div class="container-card-features">
+              <div class="features-header">
+                <h1>Basic Pakcage</h1>
+                <i class="fas fa-times" id="icon-close"></i>
+              </div>
+              <div class="container-card">
+                <div class="container-left">
+                  <button class="btn-card" id="btn-features">Features</button>
+                  <button class="btn-card" id="btn-addons">Addons</button>
+                </div>
+                <div class="container-right">
+                  <!-- section feature  -->
+                  <section class="section-features">
+                    <div class="item-features">
+                    <h2>Dashboard</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Rekapitulasi Data Pasien</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Pendapatan Pasien Umum dan Asuransi</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Perbandingan Kunjungan per periode tertentu</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Grafik Inventori meliputi Pengadaan, Penjualan, dan Purchase Order</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Pelaporan <span class="d-block">( With filter & donwloadable )</span></h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Laporan Rekap dan Detail Kdivnik</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Laporan Penunjang Lab</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Laporan Inventori</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Stok dan Transaksi Pembelian Supplier serta Penjualan Aset</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Laporan Log dan Histori Transaksi Hapus dan Edit</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Pendaftaran</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Rekam Medis Elektronik</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Manajemen Registrasi Pasien meliputi Registrasi Walk In dan Perjanjian</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Scan E-KTP dengan teknologi OCR</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Jadwal Dokter</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Perawatan</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Worklist Dokter</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Worklist Pasien</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>	Skrining Awal Pasien (Tanda Tanda Vital dan alergi)</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Pemanggilan Antrian Pasien ke Ruangan</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Dokter</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Worklist Pasien</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Catatan Perkembangan Pasien Terintegrasi (CPPT)</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Template dan Riwayat SOAP serta Resep Elektronik</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>ICD-10</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Surat Keterangan Dokter (downloadable)</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Input dan Tindakan Peralatan Medis dan AlKes Ruangan</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Farmasi</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Resep Elektronik</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Penjualan Obat Bebas non Resep</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Proses Penjualan dan Persediaan Obat</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Tuslah dan Embalase, List Resep, Retur Resep</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Rekomendasi Obat Pengganti</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Inventori</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Pengelolaan stok dan tarif</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Kasir</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Laporan Transaksi dan Setoran Kasir</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>Jasa Medis Dokter</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-features">
+                    <h2>Integrasi</h2>
+                    <div class="list-features">
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>BPJS (P-Care)</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>DisdukCapil (scan e-ktp)</p>
+                      </div>
+                      <div>
+                        <div class="icon-features">
+                          <i class="fas fa-check"></i>
+                        </div>
+                        <p>WhatsApp Blast</p>
+                      </div>
+                    </div>
+                  </div>
+                  </section>
+
+                  <!-- section addons -->
+                  <section class="section-addons" hidden>
+                    <div class="item-features">
+                      <h2>Basic Add-ons Per Bulan</h2>
+                      <div class="list-features">
+                        <div class="container-addons">
+                          <p>Tambahan User (1 - 5 user)</p>
+                          <p>Rp. 50.000 <span class="d-block">( Per User )</span></p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Tambahan User (6 - 10 user)</p>
+                          <p>Rp. 40.000 <span class="d-block">( Per User )</span></p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Tambahan User (11 - up user)</p>
+                          <p>Rp. 35.000 <span class="d-block">( Per User )</span></p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Medical Checkup (MCU)</p>
+                          <p>Rp. 150.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Laboratorium</p>
+                          <p>Rp. 100.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Integrasi Whasapp Blast</p>
+                          <p>Rp. 50.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Modul Plasma Antrian</p>
+                          <p>Rp. 50.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Modul Kiosk ( Segera Hadir )</p>
+                          <p>Rp. 50.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Asistensi On-Site <span class="d-block">(per 3 jam dengan 1 staff teraMedik<sup>CE</sup>)</span></p>
+                          <p>Rp. 500.000</p>
+                        </div>
+                        <div class="container-addons">
+                          <p>Asistensi Online <span class="d-block">(per 3 jam dengan 1 staff teraMedik<sup>CE</sup>)</span></p>
+                          <p>Rp. 250.000</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="close-btn">Close</button>
+            </div>
+          </section>
         </div>
 
       </div>

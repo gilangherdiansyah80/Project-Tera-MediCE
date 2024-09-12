@@ -180,59 +180,104 @@
     })
   }
 
-  const pricing = (e) => {
-    e.preventDefault();
+  // Format mata uang menggunakan Intl.NumberFormat
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      
+    }).format(amount);
+  };
+
+  const pricing = () => {
     const buttonPrev = document.querySelector('.btn-prev');
     const buttonNext = document.querySelector('.btn-next');
     const totalUser = document.querySelector('.total-user');
     const diskon = document.querySelector('.diskon');
-    
+    const totalPrice = document.querySelector('.total-price');
+
     // Pastikan elemen ditemukan sebelum memasang event listener
-    if (buttonPrev && buttonNext && totalUser && diskon) {
-      const hargaPerUser = 50000; // Harga diskon per user
+    if (buttonPrev && buttonNext && totalUser && diskon && totalPrice) {
+        const hargaPerUser = 50000;
+        const hargaDiskon = 40000; // Harga diskon per user jika > 5 user
   
-      // Format mata uang menggunakan Intl.NumberFormat
-      const formatCurrency = (amount) => {
-        return new Intl.NumberFormat('id-ID', {
-          style: 'currency',
-          currency: 'IDR',
-          
-        }).format(amount);
-      };
+        // Fungsi untuk memperbarui diskon berdasarkan total user
+        const updateDiskon = (currentValue) => {
+            let totalDiskon = currentValue * hargaPerUser;
+            diskon.innerHTML = formatCurrency(totalDiskon); // Format diskon dengan currency
+        };
+
+        // Fungsi untuk memperbarui total harga
+        const total = (currentValue) => {
+            let hargaPerUserAktual = currentValue > 5 ? hargaDiskon : hargaPerUser;
+            let totalHarga = currentValue * hargaPerUserAktual;
+            if (currentValue > 5) {
+              totalPrice.innerHTML = formatCurrency(totalHarga);
+              diskon.style = 'text-decoration-line: line-through';
+          } else if (currentValue <= 5) {
+              totalPrice.innerHTML = '';
+              diskon.style = 'text-decoration-line: none';
+          }
+        };
   
-      // Fungsi untuk memperbarui diskon berdasarkan total user
-      const updateDiskon = (currentValue) => {
-        let totalDiskon = currentValue * hargaPerUser;
-        diskon.innerHTML = formatCurrency(totalDiskon); // Format diskon dengan currency
-      };
+        // Event untuk tombol "prev"
+        buttonPrev.addEventListener('click', () => {
+            let currentValue = parseInt(totalUser.innerHTML) || 0;
+            if (currentValue > 0) { // Cegah nilai user kurang dari 1
+                totalUser.innerHTML = currentValue - 1;
+                updateDiskon(currentValue - 1); // Kurangi diskon
+                total(currentValue - 1); // Perbarui total harga
+            }
+        });
   
-      // Event untuk tombol "prev"
-      buttonPrev.addEventListener('click', () => {
-        let currentValue = parseInt(totalUser.innerHTML) || 0;
-        if (currentValue > 0) { // Cegah nilai user kurang dari 1
-          totalUser.innerHTML = currentValue - 1;
-          updateDiskon(currentValue - 1); // Kurangi diskon
-        }
-      });
-  
-      // Event untuk tombol "next"
-      buttonNext.addEventListener('click', () => {
-        let currentValue = parseInt(totalUser.innerHTML) || 0;
-        totalUser.innerHTML = currentValue + 1;
-        updateDiskon(currentValue + 1); // Tambah diskon
-      });
+        // Event untuk tombol "next"
+        buttonNext.addEventListener('click', () => {
+            let currentValue = parseInt(totalUser.innerHTML) || 0;
+            totalUser.innerHTML = currentValue + 1;
+            updateDiskon(currentValue + 1); // Tambah diskon
+            total(currentValue + 1); // Perbarui total harga
+        });
     } else {
-      console.error('Element(s) not found');
+        console.error('Element(s) not found');
     }
-  };  
+};
+
+const cardFeatures = () => {
+  const sectionFeatures = document.querySelector('.card-features-basic');
+  const basic = document.querySelector('#basic');
+  const icon = document.querySelector('#icon-close');
+  const btnFeatures = document.querySelector('#btn-features');
+  const btnAddons = document.querySelector('#btn-addons');
+  const addons = document.querySelector('.section-addons');
+  const features = document.querySelector('.section-features');
+  const container = document.querySelector('.container-right');
+
+  basic.addEventListener('click', () => {
+    sectionFeatures.removeAttribute('hidden');
+  })
+
+  icon.addEventListener('click', () => {
+    sectionFeatures.setAttribute('hidden', true);
+  })
+
+  btnAddons.addEventListener('click', () => {
+    addons.removeAttribute('hidden');
+    features.setAttribute('hidden', true);
+    container.style = 'overflow-y: hidden'
+  })
+
+  btnFeatures.addEventListener('click', () => {
+    features.removeAttribute('hidden');
+  })
+}
 
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
   // Panggil fungsi pricing saat halaman sudah siap
   document.addEventListener('DOMContentLoaded', pricing);
-
-
+  document.addEventListener('DOMContentLoaded', cardFeatures);
 })();
+
 
 
 
