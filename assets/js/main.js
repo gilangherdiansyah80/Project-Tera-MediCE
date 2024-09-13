@@ -323,48 +323,120 @@
 
 
 const cardFeatures = () => {
-  const pricingItems = document.querySelectorAll('#pricing-item');
-  const sectionFeatures = document.querySelectorAll('.card-features-basic');
-  const basic = document.querySelectorAll('#basic');
+  const sectionFeaturesBasic = document.querySelector('.card-features-basic');
+  const sectionFeaturesStandard = document.querySelector('.card-features-standard');
+  const sectionFeaturesAdvanced = document.querySelector('.card-features-advanced');
+  const basic = document.querySelector('#basic');
+  const standard = document.querySelector('#standard');
+  const advanced = document.querySelector('#advanced');
+  const icons = document.querySelectorAll('#icon-close'); // Ubah id jadi class untuk icon
+  const btnFeatures = document.querySelectorAll('.btn-features'); // Ubah id jadi class untuk btn features
+  const btnAddons = document.querySelectorAll('.btn-addons'); // Ubah id jadi class untuk btn addons
+  const addons = document.querySelectorAll('.section-addons');
+  const features = document.querySelectorAll('.section-features');
+  const containerRight = document.querySelector('.container-right');
+  const closeBtns = document.querySelectorAll('.close-btn'); // Ubah id jadi class untuk close button
+  
+  // card basic
+  basic.addEventListener('click', () => {
+    sectionFeaturesBasic.removeAttribute('hidden');
+  });
 
-  sectionFeatures.forEach((containerFeature) => {
-    const icon = containerFeature.querySelector('#icon-close');
-    const btnFeatures = containerFeature.querySelector('#btn-features');
-    const btnAddons = containerFeature.querySelector('#btn-addons');
-    const addons = containerFeature.querySelector('.section-addons');
-    const features = containerFeature.querySelector('.section-features');
-    const containerRight = containerFeature.querySelector('.container-right');
-    const closeBtn = containerFeature.querySelector('.close-btn');
-
-    // Tutup card saat ikon 'close' atau 'closeBtn' diklik
+  // Tutup card saat ikon 'close' atau 'closeBtn' diklik
+  icons.forEach((icon) => {
     icon.addEventListener('click', () => {
-      containerFeature.setAttribute('hidden', true);
-    });
-
-    closeBtn.addEventListener('click', () => {
-      containerFeature.setAttribute('hidden', true);
-    });
-
-    // Tampilkan addons, sembunyikan fitur
-    btnAddons.addEventListener('click', () => {
-      addons.removeAttribute('hidden');
-      features.setAttribute('hidden', true);
-      containerRight.style = 'overflow-y: hidden';
-    });
-
-    // Tampilkan fitur, sembunyikan addons
-    btnFeatures.addEventListener('click', () => {
-      features.removeAttribute('hidden');
-      addons.setAttribute('hidden', true);
+      sectionFeaturesBasic.setAttribute('hidden', true);
     });
   });
 
-  // Event handler untuk tombol "basic" pada setiap pricing item
-  pricingItems.forEach((item, index) => {
-    const basicBtn = item.querySelector('#basic');
+  closeBtns.forEach((closeBtn) => {
+    closeBtn.addEventListener('click', () => {
+      sectionFeaturesBasic.setAttribute('hidden', true);
+    });
+  });
 
-    basicBtn.addEventListener('click', () => {
-      sectionFeatures[index].removeAttribute('hidden');
+  // Tampilkan addons, sembunyikan fitur
+  btnAddons.forEach((btnAddon) => {
+    btnAddon.addEventListener('click', () => {
+      addons.forEach((addon) => addon.removeAttribute('hidden'));
+      features.forEach((feature) => feature.setAttribute('hidden', true));
+      containerRight.style = 'overflow-y: hidden';
+    });
+  });
+
+  // Tampilkan fitur, sembunyikan addons
+  btnFeatures.forEach((btnFeature) => {
+    btnFeature.addEventListener('click', () => {
+      features.forEach((feature) => feature.removeAttribute('hidden'));
+      addons.forEach((addon) => addon.setAttribute('hidden', true));
+    });
+  });
+
+  // card standard
+  standard.addEventListener('click', () => {
+    sectionFeaturesStandard.removeAttribute('hidden');
+  });
+
+  icons.forEach((icon) => {
+    icon.addEventListener('click', () => {
+      sectionFeaturesStandard.setAttribute('hidden', true);
+    });
+  });
+
+  closeBtns.forEach((closeBtn) => {
+    closeBtn.addEventListener('click', () => {
+      sectionFeaturesStandard.setAttribute('hidden', true);
+    });
+  });
+
+  // Tampilkan addons, sembunyikan fitur
+  btnAddons.forEach((btnAddon) => {
+    btnAddon.addEventListener('click', () => {
+      addons.forEach((addon) => addon.removeAttribute('hidden'));
+      features.forEach((feature) => feature.setAttribute('hidden', true));
+      containerRight.style = 'overflow-y: hidden';
+    });
+  });
+
+  // Tampilkan fitur, sembunyikan addons
+  btnFeatures.forEach((btnFeature) => {
+    btnFeature.addEventListener('click', () => {
+      features.forEach((feature) => feature.removeAttribute('hidden'));
+      addons.forEach((addon) => addon.setAttribute('hidden', true));
+    });
+  });
+
+  // card advanced
+  advanced.addEventListener('click', () => {
+    sectionFeaturesAdvanced.removeAttribute('hidden');
+  });
+
+  icons.forEach((icon) => {
+    icon.addEventListener('click', () => {
+      sectionFeaturesAdvanced.setAttribute('hidden', true);
+    });
+  });
+
+  closeBtns.forEach((closeBtn) => {
+    closeBtn.addEventListener('click', () => {
+      sectionFeaturesAdvanced.setAttribute('hidden', true);
+    });
+  });
+
+  // Tampilkan addons, sembunyikan fitur
+  btnAddons.forEach((btnAddon) => {
+    btnAddon.addEventListener('click', () => {
+      addons.forEach((addon) => addon.removeAttribute('hidden'));
+      features.forEach((feature) => feature.setAttribute('hidden', true));
+      containerRight.style = 'overflow-y: hidden';
+    });
+  });
+
+  // Tampilkan fitur, sembunyikan addons
+  btnFeatures.forEach((btnFeature) => {
+    btnFeature.addEventListener('click', () => {
+      features.forEach((feature) => feature.removeAttribute('hidden'));
+      addons.forEach((addon) => addon.setAttribute('hidden', true));
     });
   });
 };
@@ -376,6 +448,41 @@ const cardFeatures = () => {
   document.addEventListener('DOMContentLoaded', pricing);
   document.addEventListener('DOMContentLoaded', cardFeatures);
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sendEmailButton = document.getElementById('sendEmailButton');
+
+  const emailSubjectInput = document.getElementById('emailSubject');
+  const emailMessageInput = document.getElementById('emailMessage');
+
+  // Validate email form
+  function validateEmailForm() {
+    const subject = emailSubjectInput.value.trim();
+    const message = emailMessageInput.value.trim();
+    if (subject !== '' && message !== '') {
+      sendEmailButton.disabled = false;
+    } else {
+      sendEmailButton.disabled = true;
+    }
+  }
+
+  // Listen for input changes and validate forms
+  emailSubjectInput.addEventListener('input', validateEmailForm);
+  emailMessageInput.addEventListener('input', validateEmailForm);
+
+  // Handle sending email via Gmail
+  sendEmailButton.addEventListener('click', function () {
+    const subject = emailSubjectInput.value.trim();
+    const message = emailMessageInput.value.trim();
+    if (subject !== '' && message !== '') {
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedMessage = encodeURIComponent(message);
+      const emailURL = `http://mail.google.com/mail/?view=cm&fs=1&to=gilangherdiansyah404@gmail.com&subject=${encodedSubject}&body=${encodedMessage}`;
+      window.open(emailURL, '_blank');
+    }
+  });
+});
+
 
 
 
