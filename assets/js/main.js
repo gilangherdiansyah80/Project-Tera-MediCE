@@ -72,6 +72,7 @@
    * Scroll top button
    */
   let scrollTop = document.querySelector('.scroll-top');
+  let whatsapp = document.querySelector('#whatsapp');
 
   function toggleScrollTop() {
     if (scrollTop) {
@@ -88,6 +89,15 @@
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
+
+  function contactWhatsapp() {
+    if (whatsapp) {
+      window.scrollY > 100 ? whatsapp.classList.add('whatsapp-active') : whatsapp.classList.remove('whatsapp-active');
+    }
+  }
+
+  window.addEventListener('load', contactWhatsapp);
+  document.addEventListener('scroll', contactWhatsapp);
 
   /**
    * Animation on scroll function and init
