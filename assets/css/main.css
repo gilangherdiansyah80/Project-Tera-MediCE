@@ -1,5 +1,7 @@
 :root {
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Raleway", sans-serif;
   --nav-font: "Poppins", sans-serif;
 }
@@ -14,7 +16,7 @@
   /* Color for headings, subheadings and title throughout the website */
   --accent-color: #2ed58c;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #36BA98;
+  --surface-color: #36ba98;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
   /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
@@ -44,7 +46,7 @@
 }
 
 .dark-background {
-  --background-color: #36BA98;
+  --background-color: #36ba98;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #00866d;
@@ -175,7 +177,7 @@ h6 {
 /* Global Header on Scroll
 ------------------------------*/
 .scrolled .header {
-  --background-color: #36BA98;
+  --background-color: #36ba98;
 }
 
 /*--------------------------------------------------------------
@@ -199,12 +201,12 @@ h6 {
     position: relative;
   }
 
-  .navmenu>ul>li {
+  .navmenu > ul > li {
     white-space: nowrap;
     padding: 15px 14px;
   }
 
-  .navmenu>ul>li:last-child {
+  .navmenu > ul > li:last-child {
     padding-right: 0;
   }
 
@@ -231,7 +233,7 @@ h6 {
     transition: 0.3s;
   }
 
-  .navmenu>ul>li>a:before {
+  .navmenu > ul > li > a:before {
     content: "";
     position: absolute;
     height: 2px;
@@ -244,13 +246,13 @@ h6 {
   }
 
   .navmenu a:hover:before,
-  .navmenu li:hover>a:before,
+  .navmenu li:hover > a:before,
   .navmenu .active:before {
     visibility: visible;
     width: 25px;
   }
 
-  .navmenu li:hover>a,
+  .navmenu li:hover > a,
   .navmenu .active,
   .navmenu .active:focus {
     color: var(--nav-color);
@@ -289,11 +291,11 @@ h6 {
 
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
+  .navmenu .dropdown ul li:hover > a {
     color: var(--nav-dropdown-hover-color);
   }
 
-  .navmenu .dropdown:hover>ul {
+  .navmenu .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -305,7 +307,7 @@ h6 {
     visibility: hidden;
   }
 
-  .navmenu .dropdown .dropdown:hover>ul {
+  .navmenu .dropdown .dropdown:hover > ul {
     opacity: 1;
     top: 0;
     left: -100%;
@@ -407,7 +409,7 @@ h6 {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown>.dropdown-active {
+  .navmenu .dropdown > .dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
@@ -434,7 +436,7 @@ h6 {
     transition: 0.3s;
   }
 
-  .mobile-nav-active .navmenu>ul {
+  .mobile-nav-active .navmenu > ul {
     display: block;
   }
 }
@@ -451,7 +453,8 @@ h6 {
 
 .footer .footer-top {
   padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .footer-about .logo {
@@ -519,7 +522,7 @@ h6 {
   padding-right: 2px;
   font-size: 12px;
   line-height: 0;
-  color: #098A85;
+  color: #098a85;
   font-size: 15px;
 }
 
@@ -555,7 +558,8 @@ h6 {
 
 .footer .copyright {
   padding: 25px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .copyright p {
@@ -636,6 +640,39 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# CTA to Whatsapp
+--------------------------------------------------------------*/
+.contact-whatsapp {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 70px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  transition: all 0.4s;
+}
+
+.contact-whatsapp i {
+  font-size: 20px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.contact-whatsapp:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.contact-whatsapp.whatsapp-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
@@ -655,7 +692,8 @@ h6 {
 
 .page-title .heading {
   padding: 160px 0 80px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .page-title .heading h1 {
@@ -677,11 +715,11 @@ h6 {
   font-weight: 600;
 }
 
-.page-title nav ol li+li {
+.page-title nav ol li + li {
   padding-left: 10px;
 }
 
-.page-title nav ol li+li::before {
+.page-title nav ol li + li::before {
   content: "/";
   display: inline-block;
   padding-right: 10px;
@@ -701,7 +739,6 @@ section,
 }
 
 @media (max-width: 1199px) {
-
   section,
   .section {
     scroll-margin-top: 66px;
@@ -1035,7 +1072,6 @@ section,
 }
 
 @media (max-width: 768px) {
-
   .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
   .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
     margin-top: 0;
@@ -1063,7 +1099,7 @@ section,
 .features .features-item i {
   font-size: 30px;
   padding-right: 10px;
-  color: #699BF7;
+  color: #699bf7;
 }
 
 .features .features-item h3 {
@@ -1079,18 +1115,18 @@ section,
   transition: 0.3s;
 }
 
-.features .features-item article{
+.features .features-item article {
   color: #000000;
 }
 
 .features-icon {
-  background-color: #F3FCF4;
+  background-color: #f3fcf4;
   width: 100%;
-  padding: 10px
+  padding: 10px;
 }
 
 .icon {
-  background-color: #05A7AA;
+  background-color: #05a7aa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1103,13 +1139,18 @@ section,
   margin-left: 10px;
   color: white;
 }
-  
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .features .features-item {
+    height: 18rem;
+  }
+}
 
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
 .stats i {
-  background-color: #05A7AA;
+  background-color: #05a7aa;
   color: #000000;
   box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
   width: 54px;
@@ -1125,7 +1166,7 @@ section,
 }
 
 .stats .stats-item {
-  background-color: #05A7AA;
+  background-color: #05a7aa;
   margin-top: -27px;
   padding: 30px 30px 25px 30px;
   width: 100%;
@@ -1158,12 +1199,12 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
-.details .features-item+.features-item {
+.details .features-item + .features-item {
   margin-top: 100px;
 }
 
 @media (max-width: 640px) {
-  .details .features-item+.features-item {
+  .details .features-item + .features-item {
     margin-top: 40px;
   }
 }
@@ -1209,6 +1250,8 @@ section,
 }
 
 .gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
   transition: all ease-in-out 0.4s;
 }
 
@@ -1236,6 +1279,12 @@ section,
 .gallery-item-container::after {
   content: "";
   display: flex;
+}
+
+@media screen and (max-width: 480px) {
+  .gallery .gallery-item {
+    width: 10rem;
+  }
 }
 
 @keyframes scroll {
@@ -1373,7 +1422,7 @@ section,
 --------------------------------------------------------------*/
 .pricing .pricing-item {
   background-color: #ffff;
-  border: 1px solid #DFDFDF;
+  border: 1px solid #dfdfdf;
   padding: 30px 30px;
   border-radius: 5px 5px 0 0;
   display: flex;
@@ -1447,7 +1496,7 @@ section,
   border: none;
   padding: 8px;
   border-radius: 5px;
-  background-color: #6C757D;
+  background-color: #6c757d;
   color: white;
 }
 
@@ -1505,7 +1554,7 @@ section,
   flex-direction: column;
 }
 
-.container-card-features{
+.container-card-features {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -1514,6 +1563,13 @@ section,
   height: 100%;
   overflow-y: scroll;
   row-gap: 20px;
+}
+
+.container-card-features .fas {
+  font-size: 15px;
+  width: 12px;
+  height: 15px;
+  text-align: center;
 }
 
 .features-header {
@@ -1560,9 +1616,9 @@ section,
 }
 
 .item-features h2 {
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   padding: 10px;
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   font-size: 15px;
   font-weight: bold;
 }
@@ -1576,7 +1632,7 @@ section,
 }
 
 .container-features {
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   display: flex;
   align-items: center;
   column-gap: 10px;
@@ -1584,12 +1640,12 @@ section,
 }
 
 .list-features p {
-   margin-top: 20px;
-   font-size: 15px;
+  margin-top: 20px;
+  font-size: 15px;
 }
 
 .icon-features {
-  background-color: #28A745;
+  background-color: #28a745;
   width: 15px;
   height: 15px;
   display: flex;
@@ -1604,23 +1660,23 @@ section,
 }
 
 .btn-card {
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   background-color: white;
   padding: 10px;
-  color: #48C5C6;
+  color: #48c5c6;
 }
 
 .card-footer {
-  width: 45%;
+  width: 100%;
   display: flex;
   justify-content: center;
   background-color: white;
   padding: 10px;
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
 }
 
 .close-btn {
-  background-color: #6C757D;
+  background-color: #6c757d;
   border: none;
   padding: 10px;
   width: 100%;
@@ -1631,7 +1687,7 @@ section,
   display: flex;
   justify-content: space-between;
   height: 59px;
-  border: 1px solid #DEE2E6;
+  border: 1px solid #dee2e6;
   align-items: center;
   column-gap: 10px;
   padding: 10px;
@@ -1656,10 +1712,50 @@ section,
   width: 30px;
 }
 
-@media (max-width: 992px) {
+@media screen and (min-width: 1200px) {
+  .container-card-features {
+    width: 45%;
+  }
+
+  .features-header h1 {
+    width: 70%;
+    z-index: 10000000;
+  }
+
+  .container-card-features .fas {
+    font-size: 15px; /* Sesuaikan ukuran ikon */
+    width: 20px;
+    height: 15px;
+  }
+
+  .card-footer {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .pricing .box {
     max-width: 60%;
     margin: 0 auto 30px auto;
+  }
+
+  .container-card-features {
+    width: 75%;
+  }
+
+  .features-header h1 {
+    width: 70%;
+    z-index: 10000000;
+  }
+
+  .container-card-features .fas {
+    font-size: 15px; /* Sesuaikan ukuran ikon */
+    width: 20px;
+    height: 15px;
+  }
+
+  .card-footer {
+    width: 75%;
   }
 }
 
@@ -1668,12 +1764,49 @@ section,
     max-width: 80%;
     margin: 0 auto 30px auto;
   }
+  .container-card-features {
+    width: 90%;
+  }
+
+  .features-header h1 {
+    width: 70%;
+    z-index: 10000000;
+  }
+
+  .container-card-features .fas {
+    font-size: 15px; /* Sesuaikan ukuran ikon */
+    width: 20px;
+    height: 15px;
+  }
+
+  .card-footer {
+    width: 90%;
+  }
 }
 
 @media (max-width: 420px) {
   .pricing .box {
     max-width: 100%;
     margin: 0 auto 30px auto;
+  }
+
+  .container-card-features {
+    width: 100%;
+  }
+
+  .features-header h1 {
+    width: 70%;
+    z-index: 10000000;
+  }
+
+  .container-card-features .fas {
+    font-size: 15px; /* Sesuaikan ukuran ikon */
+    width: 20px;
+    height: 15px;
+  }
+
+  .card-footer {
+    width: 100%;
   }
 }
 
@@ -1777,10 +1910,16 @@ section,
   color: var(--accent-color);
 }
 
+@media (max-width: 420px) {
+  .faq .content h3 {
+    font-size: 30px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
-.contact .info-item+.info-item {
+.contact .info-item + .info-item {
   margin-top: 40px;
 }
 
@@ -1820,31 +1959,35 @@ section,
   height: 100%;
 }
 
-.contact .php-email-form input[type=text],
-.contact .php-email-form input[type=email],
+.contact .php-email-form input[type="text"],
+.contact .php-email-form input[type="email"],
 .contact .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
   border-radius: 0;
   color: var(--default-color);
-  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  background-color: color-mix(
+    in srgb,
+    var(--background-color),
+    transparent 50%
+  );
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
-.contact .php-email-form input[type=text]:focus,
-.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }
 
-.contact .php-email-form input[type=text]::placeholder,
-.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form input[type="text"]::placeholder,
+.contact .php-email-form input[type="email"]::placeholder,
 .contact .php-email-form textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   color: var(--contrast-color);
   background: var(--accent-color);
   border: 0;
@@ -1853,7 +1996,7 @@ section,
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
